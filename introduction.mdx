@@ -1,6 +1,6 @@
 ---
 title: Introduction
-description: 'Welcome to the home of your new documentation'
+description: "What's Locale Sync?"
 ---
 
 <img
@@ -14,26 +14,35 @@ description: 'Welcome to the home of your new documentation'
   alt="Hero Dark"
 />
 
+Locale Sync is a software translation SaaS which allow developers to easily manage their project translations. The service itself has Over the Air (OTA) support, that being the most interesting feature by far, you can still use our packages to manage your translation files without even creating an account.
+
+## How it works?
+
+Both Flutter and TS SDKs use generated code to make it easier to get auto-complete when developing, so, since you setup your environment and get your files generated, that will basically create one object for each language you've setted up on <a href="#">Locale Sync's dashboard</a>, that objects being the group of sentences and translations itself, which will be used as fallback in case somehow server get unreachable.
+
+When translations are fetched from backend, they're stored locally on your application, to be used when the http request fails, if your app has no translations stored, lastly, the SDK will use the generated objects as translation source.
+
+### 1. Strings fetched successfully
+
+<img src="/images/flow-1.svg" />
+
+When the request succeeds strings are used in memory during app's execution and saved into offline storage.
+
+### 2. Strings fetch fails
+
+<img src="/images/flow-2.svg" />
+
+When the request fails, our sdk will lookup for offline strings that may be stored offline.
+
+### 3. Fetch and offline storage fails
+<img src="/images/flow-3.svg" />
+
+When both http and offline storage requests fails, the fallback will be used as a replacement for this translations. For this reason, we highly recommend you to keep your fallback strings in sync with the backend
+
 ## Setting up
 
-The first step to world-class documentation is setting up your editing environments.
+You can easily start setting up your project <a href="/config/config-file">here</a>
 
-<CardGroup cols={2}>
-  <Card
-    title="Edit Your Docs"
-    icon="pen-to-square"
-    href="https://mintlify.com/docs/quickstart"
-  >
-    Get your docs set up locally for easy development
-  </Card>
-  <Card
-    title="Preview Changes"
-    icon="image"
-    href="https://mintlify.com/docs/development"
-  >
-    Preview your changes before you push to make sure they're perfect
-  </Card>
-</CardGroup>
 
 ## Make it yours
 

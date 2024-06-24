@@ -1,18 +1,21 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Locale Sync",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#F465F6",
+    "light": "#F465F6",
+    "dark": "#2C1434",
+    "background": {
+      "dark": "#131112"
+    },
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#F465F6",
+      "to": "#DCB9F0"
     }
   },
   "topbarLinks": [
