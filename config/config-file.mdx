@@ -2,3 +2,46 @@
 title: Config file
 description: "Let's set it up"
 ---
+
+Locale Sync's config file is nothing but a json which must contain all needed metadata from your workspace and/or repository to get things working through our CLI.
+
+To get started, all you need to do is to create a file called **localesync.config.json** at the root of your project.
+You'll add your data following this template:
+
+```json
+{
+    "repository_id" : "my_repository_id",
+    "api_token": "my_api_token"
+}
+
+```
+
+You can easily get this from your repository page on "Tokens" tab. If that's your first setup, you may need to generate a new one, you can do it by clicking the "New" button on right side.
+
+Once you've set this up, you need to check your SDK on how to use it.
+
+<CardGroup cols={2}>
+  <Card
+    title="Flutter"
+    icon="code"
+    iconType="duotone"
+    href="/sdk/flutter">
+    Flutter SDK
+  </Card>
+  <Card
+    title="Typescript"
+    icon="code"
+    iconType="duotone"
+    href="/sdk/typescript"
+  >
+    TS SDK
+  </Card>
+  <Card
+    title="Typescript"
+    icon="code"
+    iconType="duotone"
+    href="/api-reference"
+  >
+    Rest API
+  </Card>
+</CardGroup>
