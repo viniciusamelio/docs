@@ -14,7 +14,7 @@ Unlikely other translation tools, such as .arb files, you declare all of your la
 
 As you can see in the example below, you can either declare you string values in string/string format or in an string/object one:
 
-```json
+```json lib/translations/translation_callback.json
     {
         "en": {
             "myString01" :  "my string value",
@@ -38,7 +38,7 @@ You'll mostly use object format to handle *plural* and *none* forms of an string
 
 By default, when you declare an string, using object format, which contains plural or none props, when this file get parsed to your sdk's language you'll get a param named count, which will define which one to show
 
-```json
+```json lib/translations/translation_callback.json
     {
         "en": {
             "newMessagesToast" : {
@@ -54,7 +54,7 @@ By default, when you declare an string, using object format, which contains plur
 
 You can add arguments to your strings by wrapping up your desired argument names with {}
 
-```json
+```json lib/translations/translation_callback.json
     {
         "en": {
             "newMessagesToast" : {

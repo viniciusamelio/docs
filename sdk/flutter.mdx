@@ -7,7 +7,7 @@ description: "Flutter SDK"
 
 Locale Sync's SDK integrates with Flutter through flutter_localizations package, so, naturally, you'll need to get this added to your **pubspec.yaml**:
 
-```yaml
+```yaml pubspec.yaml
     ...
     flutter_localizations:
         sdk: flutter
@@ -17,7 +17,7 @@ Locale Sync's SDK integrates with Flutter through flutter_localizations package,
 
 Once added, you need to add your supported locales on your app widget along with the localization delegates:
 
-```dart
+```dart lib/app.dart
     return MaterialApp(
         supportedLocales: const [
             Locale("pt"),
@@ -54,7 +54,7 @@ This will send your translations to the repository specified in your config file
 
 On your app widget you need to add LocaleSync.delegate to that list:
 
-```dart
+```dart lib/app.dart
     return MaterialApp(
         supportedLocales: const [
             Locale("pt"),
@@ -73,7 +73,7 @@ On your app widget you need to add LocaleSync.delegate to that list:
 
 If you want to use our over-the-air strings feature you just need to call setup method from LocaleSync on your main.dart, or whatever entry point you're using:
 
-```dart
+```dart main.dart
     void main() async {
         // setups
         await LocaleSync.setup(
@@ -91,10 +91,34 @@ If you want to use our over-the-air strings feature you just need to call setup 
 
 ## Getting translations
 
-```dart
+```dart lib/screens/my_screen.dart
     ...,
     Text(
         LocaleSync.of(context).yourString
     ),
     ...
+```
+
+When you get strings which takes arguments you add it as a function arg, and the same is applied to plural strings:
+
+```dart lib/screens/my_screen.dart
+    ...,
+    Text(
+        LocaleSync.of(context).minValidation(
+            count: 8,
+            name: translations.password,
+        ),
+    ),
+    ...
+```
+
+```json lib/translations/fallback_translation.json
+    {
+        "en": {
+            "minValidation" : {
+                "plural" : "{name} deve ter no mínimo {count} caracteres",
+                "value" : "{name} deve ter no mínimo 1 caracter"
+            }
+        }
+    }
 ```

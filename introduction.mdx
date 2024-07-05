@@ -24,18 +24,22 @@ When translations are fetched from backend, they're stored locally on your appli
 
 ### 1. Strings fetched successfully
 
-<img src="/images/flow-1.svg" />
+<img src="/images/flow-1.svg" alt="Strings fetched successfully flow" className="hidden dark:block" />
+<img src="/images/light/flow-1.svg" alt="Strings fetched successfully flow" className="block dark:hidden" />
 
 When the request succeeds strings are used in memory during app's execution and saved into offline storage.
 
 ### 2. Strings fetch fails
 
-<img src="/images/flow-2.svg" />
+<img src="/images/flow-2.svg" alt="Strings fetch fails flow" className="hidden dark:block" />
+<img src="/images/light/flow-2.svg" alt="Strings fetch fails flow" className="block dark:hidden" />
+
 
 When the request fails, our sdk will lookup for offline strings that may be stored offline.
 
 ### 3. Fetch and offline storage fails
-<img src="/images/flow-3.svg" />
+<img src="/images/flow-3.svg" alt="Fallback flow"  className="hidden dark:block" />
+<img src="/images/light/flow-3.svg" alt="Fallback flow"  className="block dark:hidden" />
 
 When both http and offline storage requests fails, the fallback will be used as a replacement for this translations. For this reason, we highly recommend you to keep your fallback strings in sync with the backend
 
