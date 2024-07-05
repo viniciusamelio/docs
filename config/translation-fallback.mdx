@@ -1,0 +1,67 @@
+---
+title: Translation fallback
+description: "Your translation base file"
+---
+
+This file is meant to be the base structure for this project, at least it's offline usage.
+It will contains all your app strings and languages, even the ones your current plan can't afford.
+
+You can either declare your strings and languages even before setting up your repository on <a href="https://app.localesync.com">dashboard</a> or get it after creating your languages and strings by yourself there.
+
+## Syntax
+
+Unlikely other translation tools, such as .arb files, you declare all of your languages and strings in a single file called **translation_fallback.json**. It will be placed in a folder called translations, inside your /lib (for Flutter projects) or /src (on TS projects).
+
+As you can see in the example below, you can either declare you string values in string/string format or in an string/object one:
+
+```json
+    {
+        "en": {
+            "myString01" :  "my string value",
+            "myString02" : {
+                "value" : "My object value"
+            }
+        },
+        "pt": {
+            "myString01" :  "Minha string",
+            "myString02" : {
+                "value" : "Meu objeto"
+            }
+        }
+    }
+```
+
+You'll mostly use object format to handle *plural* and *none* forms of an string
+
+
+## Plural
+
+By default, when you declare an string, using object format, which contains plural or none props, when this file get parsed to your sdk's language you'll get a param named count, which will define which one to show
+
+```json
+    {
+        "en": {
+            "newMessagesToast" : {
+                "value" : "You have a new message",
+                "none" : "You have no new messages",
+                "plural" : "You have new messages"
+            }
+        }
+    }
+```
+
+## Arguments
+
+You can add arguments to your strings by wrapping up your desired argument names with {}
+
+```json
+    {
+        "en": {
+            "newMessagesToast" : {
+                "value" : "{user}, you have a new message",
+                "none" : "{user}, you have no new messages",
+                "plural" : "{user}, you have new {count} messages"
+            }
+        }
+    }
+```
