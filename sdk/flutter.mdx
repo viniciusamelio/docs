@@ -1,0 +1,100 @@
+---
+title: Flutter
+description: "Flutter SDK"
+---
+
+## Requirements
+
+Locale Sync's SDK integrates with Flutter through flutter_localizations package, so, naturally, you'll need to get this added to your **pubspec.yaml**:
+
+```yaml
+    ...
+    flutter_localizations:
+        sdk: flutter
+    intl: any
+    ...
+```
+
+Once added, you need to add your supported locales on your app widget along with the localization delegates:
+
+```dart
+    return MaterialApp(
+        supportedLocales: const [
+            Locale("pt"),
+            Locale("en"),
+        ],
+        localizationsDelegates: [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+        ],
+    );
+```
+
+## Installing
+
+Add locale_sync package as a dependency:
+
+```bash
+    flutter pub add locale_sync
+```
+
+Once you have already added your <a href="/config/config-file">config file</a> and your <a href="/config/translation-fallback">translation fallback file</a> you can generate your .dart files by running:
+
+```bash
+    dart run locale_sync gen
+```
+
+If you want to upload it to servers already you can just run after:
+
+```bash
+    dart run locale_sync upload
+```
+
+This will send your translations to the repository specified in your config file, upserting languages and strings from your file.
+
+On your app widget you need to add LocaleSync.delegate to that list:
+
+```dart
+    return MaterialApp(
+        supportedLocales: const [
+            Locale("pt"),
+            Locale("en"),
+        ],
+        localizationsDelegates: [
+            // Add this line
+            LocaleSync.delegate
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+        ],
+    );
+```
+
+## Over the air
+
+If you want to use our over-the-air strings feature you just need to call setup method from LocaleSync on your main.dart, or whatever entry point you're using:
+
+```dart
+    void main() async {
+        // setups
+        await LocaleSync.setup(
+            apiToken: "your-api-token",
+            repositoryId: "your-repository-id",
+        );
+        
+        // run your app
+        runApp(
+            const App(),
+        );
+    }
+```
+
+
+## Getting translations
+
+```dart
+    ...,
+    Text(
+        LocaleSync.of(context).yourString
+    ),
+    ...
+```

@@ -60,6 +60,13 @@
       ]
     },
     {
+      "group": "SDK's",
+      "pages": [
+        "sdk/flutter",
+        "sdk/typescript"
+      ]
+    },
+    {
       "group": "Essentials",
       "pages": [
         "essentials/markdown",
