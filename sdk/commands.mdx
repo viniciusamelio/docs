@@ -1,0 +1,18 @@
+---
+title: Commands
+description: "SDK commands"
+---
+
+The way you can call our sdk through different languages may vary but the commands will be pretty much the same:
+
+## Gen
+Generates your language files from your **translation_fallback.json**
+
+## Upload
+Uploads your **translation_fallback.json** content to the server, upserting all languages and strings
+
+## Download
+Downloads a **translation_fallback.json** from server, overriding your current file, it will contain the data from the server and all downloaded strings will be in the object format
+
+## Sync
+It calls upload, download and gen, following this order. It can be helpful on CI/CD pipelines, but be careful with possible overridings

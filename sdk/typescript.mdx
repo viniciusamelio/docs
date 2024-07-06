@@ -2,3 +2,99 @@
 title: Typescript
 description: "TS SDK"
 ---
+
+## Installing
+
+Once you have already added your <a href="/config/config-file">config file</a> and your <a href="/config/translation-fallback">translation fallback file</a> you can generate your .ts files by running:
+
+<CodeGroup>
+```bash npm
+npx locale-sync gen
+```
+```bash pnpm
+pnpx locale-sync gen
+```
+```bash bun
+bunx locale-sync gen
+```
+</CodeGroup>
+
+
+If you want to upload it to servers already you can just run after:
+
+<CodeGroup>
+```bash npm
+npx locale-sync upload
+```
+```bash pnpm
+pnpx locale-sync upload
+```
+```bash bun
+bunx locale-sync upload
+```
+</CodeGroup>
+
+
+This will send your translations to the repository specified in your config file, upserting languages and strings from your file.
+
+Somewhere in your app (we recommend inside main function) you'll need to setup the sdk, you can do so by adding:
+
+
+```typescript
+const translator = new Translator("en", "your-api-token",  "your-repository-id");
+translator.fetch();
+```
+
+You just need to call .fetch() if you want to use the over-the-air feature, otherwise you can just use raw translator object
+
+
+## Getting translations
+
+<CodeGroup>
+```tsx React
+import {translator} from "@/di";
+
+export const MyComponent = () => {
+  const translator = inject<Translator>("translator");
+
+  return (
+    <h2>
+      {{translator.translate('myString')}}
+    </h2>
+  );
+}
+```
+```tsx Vue
+<script setup lang="ts">
+  import {translator} from "@/di";
+
+  const translator = inject<Translator>("translator");
+</script>
+
+<template>
+  <h2>
+    {{translator.translate('myString')}}
+  </h2>
+</template>
+```
+</CodeGroup>
+
+
+When you get strings which takes arguments you add it as a function arg, and the same is applied to plural strings:
+
+<CodeGroup>
+```tsx src/yourfile.ts
+const message = translator.translate('minValidation',8, {name: 'Password'});
+// Handle validation logic
+```
+```tsx src/translations/fallback_translation.json
+{
+  "en": {
+        "minValidation" : {
+                "plural" : "{name} deve ter no mínimo {count} caracteres",
+                "value" : "{name} deve ter no mínimo 1 caracter"
+            }
+        }
+}
+```
+</CodeGroup>
