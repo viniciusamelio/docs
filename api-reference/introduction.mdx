@@ -1,33 +1,19 @@
 ---
 title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+description: 'Available Http methods showcase'
 ---
 
 <Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
+  If you're looking for an easier way to manage your translations, you should look if there's an SDK available, if not, do not worry, it can be pretty easy setup your own service to handle our server actions
 </Note>
 
-## Welcome
+All endpoints called from SDK's CLI can be accessed as regular http calls from your code
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
-
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+All API endpoints are authenticated using a custom header:
 
 ```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+"Repository-token" : "Your API token here"
 ```
