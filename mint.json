@@ -58,11 +58,15 @@
       "pages": ["sdk/commands", "sdk/flutter", "sdk/typescript"]
     },
     {
+      "group": "Server Side",
+      "pages": ["server-side/web-hooks"]
+    },
+    {
       "group": "API Documentation",
       "pages": ["api-reference/introduction"]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Endpoints",
       "pages": [
         "api-reference/endpoint/download-translations",
         "api-reference/endpoint/upload-translations"

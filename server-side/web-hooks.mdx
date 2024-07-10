@@ -1,0 +1,63 @@
+---
+title: Web Hooks
+description: "Get notified when your translations change"
+---
+
+On premium workspaces (hobby and pro plans) you can set hooks, which send a request to an URL provided by you, to get notified whenever your repository strings change.
+
+## Response
+
+There are two possible json formats you get when updating your strings, which must vary depending from where you are editing them.
+
+<CodeGroup>
+```json From editor
+{
+    "type" : "created",
+    "at" : "2024-10-10T00:00:0000",
+    "by" : "user:testUserIdHere",
+    "data" : {
+        "id" : "translation:testTranslation01",
+        "value" : {
+            "value" : "string",
+            "plural" : "string"
+        },
+        "createdAt" : "timestamp",
+        "sentence": "sentence:idHere",
+        "language" : "language:idHere",
+        "createdBy" : "user:userIdHere"
+    }
+}
+```
+
+```json From cli / updating file
+{
+    "type" : "updated",
+    "at" : "2024-10-10T00:00:0000",
+    "by" : "user:testUserIdHere",
+    "data" : [
+            {
+            "id" : "translation:testTranslation01",
+            "value" : {
+                "value" : "string",
+                "plural" : "string"
+            },
+            "createdAt" : "timestamp",
+            "sentence": "sentence:idHere",
+            "language" : "language:idHere",
+            "createdBy" : "user:userIdHere"
+        },
+        {
+            "id" : "translation:testTranslation02",
+            "value" : {
+                "value" : "string",
+                "plural" : "string"
+            },
+            "createdAt" : "timestamp",
+            "sentence": "sentence:idHere",
+            "language" : "language:idHere",
+            "createdBy" : "user:userIdHere"
+        }
+    ]
+}
+```
+</CodeGroup>
